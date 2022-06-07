@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "08083b53-295a-4dc2-8479-16024f44819a",
+		"name": "Examen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21048119"
+	},
+	"item": [
+		{
+			"name": "/Comentario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsuario\": 1,\r\n\t\"idPublicacion\": 2,\r\n\t\"comentario\": \"Jajaja si soy\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/comentario",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comentario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cometario/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/comentario/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comentario",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publicacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUsusario\":1,\r\n\t\"texto\":\"Feliz cumpleaños\",\r\n\t\"fecha\":\"04/06/2022\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9002/api/publicacion",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"api",
+						"publicacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publicacion/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9002/api/publicacion/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"api",
+						"publicacion",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reaccion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPublicacion\":1,\r\n\t\"idUsuario\":3,\r\n\t\"idTipoReaccion\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9001/api/reaccion",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"reaccion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/reaccion/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9001/api/reaccion/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"reaccion",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

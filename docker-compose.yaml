@@ -1,0 +1,46 @@
+version: '3.3'
+services:
+  eureka:
+    image: juanda1221/eurekaserver:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+  examenfinal:
+    image: juanda1221/examenfinal:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
+      - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
+    ports:
+      - "9000:9000"
+    depends_on:
+      - postgres
+  publicacion:
+    image: juanda1221/publicacion:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
+      - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
+    ports:
+      - "9002:9002"
+    depends_on:
+      - postgres
+  reaccion:
+    image: juanda1221/raccion:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
+      - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
+      - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
+    ports:
+      - "9001:9001"
+    depends_on:
+      - postgres
+  

@@ -1,5 +1,9 @@
-FROM adoptopenjdk:11-jre-hotspot
-MAINTAINER juanda121.com
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} Eureka-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/Eureka-0.0.1-SNAPSHOT.jar"]
+FROM openjdk:8u151-jre-slim
+
+EXPOSE 8761
+
+COPY ./target/eurekaserver.jar /usr/src/eurekaserver.jar
+
+WORKDIR /usr/src
+
+CMD ["java", "-jar" , "eurekaserver.jar"]
