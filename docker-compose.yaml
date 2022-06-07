@@ -1,15 +1,25 @@
 version: '3.3'
 services:
   eureka:
-    image: juanda1221/eurekaserver:0.0.1-SNAPSHOT
+    image: juanda1221/eureka:0.0.1-SNAPSHOT
     ports:
       - "8761:8761"
+
+  postgres:
+    build: servicesData/postgresdb/
+    environment:
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - 5433:5433
+    volumes:
+      - ./blockstorage/postgres:/var/lib/postgresql/data
+
   examenfinal:
     image: juanda1221/examenfinal:0.0.1-SNAPSHOT
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/postgres
-      - SPRING_DATASOURCE_USERNAME=admin
-      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=hola12345
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
       - SPRING_BOOT_ADMIN_URL=http://172.17.0.1:8090
       - SPRING_BOOT_ADMIN_CLIENT_URL=http://172.17.0.1:8090
@@ -31,7 +41,7 @@ services:
     depends_on:
       - postgres
   reaccion:
-    image: juanda1221/raccion:0.0.1-SNAPSHOT
+    image: juanda1221/reacciones:0.0.1-SNAPSHOT
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://172.17.0.1:5432/postgres
       - SPRING_DATASOURCE_USERNAME=admin
